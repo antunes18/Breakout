@@ -19,114 +19,82 @@
 	#include "Carregador.agc"
 	#include "MoveJogador.agc"
 	#include "Menu.agc"
+	#include "Colisoes.agc"
 
 	Gosub Carregador
 
-	flagColisao = 1
+	flagColisao0 = 1
+	flagColisao1 = 1
+	flagColisao2 = 1
+	
+	flagColisao3 = 1
+	flagColisao4 = 1
+	flagColisao5 = 1
+	
+	flagColisao6 = 1
+	flagColisao7 = 1
+	flagColisao8 = 1
+	
+	flagColisao9 = 1
+	flagColisao10 = 1
+	flagColisao11 = 1
+	
+	flagColisao12 = 1
+	flagColisao13 = 1
+	flagColisao14 = 1
+	
+	flagColisao15 = 1
+	flagColisao16 = 1
+	flagColisao17 = 1
+	
+	flagColisao18 = 1
+	flagColisao19 = 1
+	flagColisao20 = 1
+	
+	flagColisao21 = 1
+	flagColisao22 = 1
+	flagColisao23 = 1
+	
+	flagColisao24 = 1
+	flagColisao25 = 1
+	flagColisao26 = 1
+	
+	flagColisao27 = 1
+	flagColisao28 = 1
+	flagColisao29 = 1
+	
+	flagColisao30 = 1
+	flagColisao31 = 1
+	flagColisao32 = 1
+	
 	pontuacao = 0
 	pontuacaoMaisAlta = 0
-	colisaoBolaBarra = 0
+	gameOver = 1
 
-	Gosub MenuJogo
-		
+	Gosub MenuJogo	
 do	
+		
+	if GameOver = 1
+		Gosub MenuJogo
+		pontuacao = 0	
+	endif
+	
 	Gosub MovimentacaoJogador
-	// SetSpritePhysicsRestitution (2, 1000)
 	
-// Mostrar sprite da barra, da bola, dos tijolos e esconder os botões
-	if GetVirtualButtonPressed(1)
-		StopMusic() 		 
-		for i = 1 to 5
-			SetVirtualButtonActive(i, 0)
-		next i
-		
-		for i = 1 to 35
-			SetSpriteVisible(i, 1)
-		next i
-		
-		for i = 3 to 35
-			SetSpriteShape(i, 2)
-			SetSpritePhysicsOn(i, 3)
-		next i
-		
-		SetTextVisible(1, 0)
-		
-		SetVirtualButtonVisible(1, 0)
-		SetVirtualButtonVisible(2, 0)
-		SetVirtualButtonVisible(3, 0)
+	if pontuacao > pontuacaoMaisAlta
+		pontuacaoMaisAlta = pontuacao
 	endif
 	
-// Ocultar botões, sprites e tocar música de fundo		
-	if GetVirtualButtonPressed(2) 
-		for i = 1 to 5
-			SetVirtualButtonActive(i, 0)
-		next i
-		
-		SetTextVisible(1, 0)
-		SetVirtualButtonVisible(1, 0)
-		SetVirtualButtonVisible(2, 0)
-		SetVirtualButtonVisible(3, 0)
-		
-		LoadMusic(2, "cant-stop-coming.mp3")
-		PlayMusic(2, 2)
-		SetMusicFileVolume(2, 15)
-		
-		CreateText(2, "Música de fundo: Azazel - Can't Stop Coming")
-		SetTextSize(2, 50)
-		SetTextAlignment(2, 1)
-		SetTextPosition(2, 640, 360)
-	endif
+	print ("Pontuação: "+str(pontuacao)+" / Melhor pontuação: "+str(pontuacaoMaisAlta))
 	
-// Ocultar botões, sprites e tocar sons (efeitos sonoros)
-	if GetVirtualButtonPressed(3)
-		StopMusic() 
-		
-		SetTextVisible(1, 0)
-		SetVirtualButtonActive(1, 0)
-		SetVirtualButtonActive(2, 0)
-		SetVirtualButtonActive(3, 0)
-		
-		SetVirtualButtonVisible(1, 0)
-		SetVirtualButtonVisible(2, 0)
-		SetVirtualButtonVisible(3, 0)
-		SetVirtualButtonVisible(4, 1)
-		SetVirtualButtonVisible(5, 1)
-		
-		SetVirtualButtonActive(4, 1)
-		SetVirtualButtonActive(5, 1)
-	endif
+	Gosub ColisaoSprites
 	
-	if GetVirtualButtonPressed(4)
-		PlaySound(3)
-	endif
-	
-	if GetVirtualButtonPressed(5)			
-		PlaySound(4)
-	endif
-	
-	/*
-	if flagColisao = 1
-		if GetSpriteCollision(2, 7) = 1
-			DeleteSprite(7)
-			flagColisao = 0
-		endif
-	endif
-	*/
-			
 	Sync()
-	
-	if colisaoBolaBarra = GetPhysicsCollision(1, 2)
-		SetSpritePhysicsRestitution (2, 1000)
-	endif
 loop
 
 //SetSpritePosition(2, 512, 384)
 
 // SetSpriteShapeCircle(2, 0, 0, 16)
-
-// SetSpritePhysicsAngularVelocity (2, random ( 0, 10 ) )
-
-// SetSpritePhysicsVelocity(2, 0, 10)
 
 //SetPhysicsGravity(0, 200)
 

@@ -10,15 +10,14 @@ Carregador:
 
 	SetSpritePosition(1, barraX, barraY)
 
-	SetSpritePhysicsOn(1, 1)
-
+	SetSpritePhysicsOn(1, 3)
+	
 // Bola
 	LoadImage(2, "ball_gray.png")
 	CreateSprite(2, 2)
-	SetSpritePosition(2, 512, 600)
-	SetSpritePhysicsOn(2, 2)
+	SetSpritePhysicsOn(2, 2)	
 	SetSpriteShape(2, 1)
-
+		
 	xVermelho = 0
 	xLaranja = 0
 	xDourado = 0
@@ -48,6 +47,7 @@ Carregador:
 		CreateSprite(i, i)
 		SetSpritePosition(i, xDourado, 285)
 		xDourado = xDourado + 120 
+		// SetSpritePhysicsOn(i, 1)
 	next i
 
 	SetPhysicsWallBottom(0)
