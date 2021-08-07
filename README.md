@@ -1,5 +1,5 @@
 # Breakout
-  *My First Game*, projeto integrador do 1º período.
+  *My First Game*, projeto integrador do 1º período. Vídeo demonstração: https://youtu.be/bjlyn--ibS4
 ## Escopo
  
 ### O que o jogo faz? Qual o objetivo dele? O que não será implementado no jogo (limites)?
