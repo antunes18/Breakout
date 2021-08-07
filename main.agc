@@ -1,4 +1,3 @@
-
 // Project: Breakout 
 // Created: 2021-06-09
 
@@ -20,7 +19,7 @@
 	#include "MoveJogador.agc"
 	#include "Menu.agc"
 	#include "Colisoes.agc"
-
+	
 	Gosub Carregador
 
 	flagColisao0 = 1
@@ -70,10 +69,8 @@
 	pontuacao = 0
 	pontuacaoMaisAlta = 0
 	gameOver = 1
-
-	Gosub MenuJogo	
+			
 do	
-		
 	if GameOver = 1
 		Gosub MenuJogo
 		pontuacao = 0	
@@ -85,17 +82,9 @@ do
 		pontuacaoMaisAlta = pontuacao
 	endif
 	
-	print ("Pontuação: "+str(pontuacao)+" / Melhor pontuação: "+str(pontuacaoMaisAlta))
+	print("Pontuação: "+str(pontuacao)+" / Melhor pontuação: "+str(pontuacaoMaisAlta))
 	
 	Gosub ColisaoSprites
-	
+
 	Sync()
 loop
-
-//SetSpritePosition(2, 512, 384)
-
-// SetSpriteShapeCircle(2, 0, 0, 16)
-
-//SetPhysicsGravity(0, 200)
-
-//SetSpritePhysicsOn (2, 2)
